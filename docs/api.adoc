@@ -1,0 +1,2 @@
+${insert("print")}
+${insert("add")}

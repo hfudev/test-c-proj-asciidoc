@@ -1,0 +1,25 @@
+name: build docs 
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y -q --no-install-recommends asciidoctor doxygen
+      - run: |
+          pip install asciidoxy
+      - run: |
+          doxygen
+          asciidoxy -s projects.toml docs/api.adoc
+      - uses: actions/upload-artifact@v3
+        with:
+          name: generated-asciidoc-files
+          path: build/intermediate/*.adoc

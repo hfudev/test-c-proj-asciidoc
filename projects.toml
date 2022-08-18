@@ -1,0 +1,5 @@
+[packages]
+
+[packages.test_comp]
+type = "local"
+package_dir = "test_comp"

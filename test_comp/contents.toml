@@ -1,0 +1,6 @@
+[package]
+name = "test_comp"
+
+[reference]       
+type = "doxygen"  
+dir = "../docs/xml"
